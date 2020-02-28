@@ -1,0 +1,64 @@
+
+@basic-gray: #DDDDDD;
+@lime-1: #f0f4c3;
+@backdrop-overlay-color: rgba(0,0,0,0.6);
+@nav-background: @lime-1;
+@link-color: black;
+
+
+@layer-nav: 1000;
+@layer-content: 2000;
+@layer-backdrop: 9000;
+
+
+.navigation{
+    z-index: @layer-nav;
+    background-color: @nav-background;
+    display: grid;
+
+    mat-toolbar{
+        width: 100%;
+        height: 48px;
+        
+        background-color: inherit;
+
+        mat-icon{
+            cursor:pointer;
+            left: 12px;
+        }
+    }
+    
+    nav{
+        background-color: inherit;    
+        ul{
+            list-style-type: none;
+            li{
+                padding: 6px;
+                a{
+                    text-decoration: none;
+                    color: @link-color;
+                }
+            }
+        }
+    }
+}
+
+.content-grid{
+    background: white;
+    z-index: @layer-content;
+    position: absolute;
+    width: 100%;
+    height:100%;
+
+    .backdrop{
+        background: @backdrop-overlay-color;
+        z-index: @layer-backdrop;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+    }
+}
+
