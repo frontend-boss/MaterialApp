@@ -1,27 +1,39 @@
 import { Component } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { trigger, state, style, animate, transition, stagger, query } from '@angular/animations';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less'],
+  styleUrls: ['./app.component.scss'],
   
   animations: [
     trigger('openClose', [
-      state('open', style({height: '200px',})),
+      state('open', style({height: '70vh',})),
       state('closed', style({height: '0px',})),
-      transition('open => closed', [animate('0.3s ease-out')]),
-      transition('closed => open', [animate('0.3s ease-out')]),
+      transition('open => closed', [animate('0.3s cubic-bezier(.51,.51,0,1)')]),
+      transition('closed => open', [animate('0.3s cubic-bezier(.51,.51,0,1)')]),
     ]),
 
     trigger('openCloseBackdrop', [
       state('open', style({visibility: 'visible', cursor: 'pointer', opacity: '1'})),
       state('closed', style({visibility: 'hidden', cursor: 'auto', opacity: '0'})),
-      transition('open => closed', [animate('0.3s ease-out')]),
-      transition('closed => open', [animate('0.3s ease-out')]),
+      transition('open => closed', [animate('0.2s ease-out')]),
+      transition('closed => open', [animate('0.2s ease-out')]),
     ]),
-  ]
+
+    
+    trigger('openCloseLinks', [
+      transition('open => closed', [ // each time the binding value changes
+        query('li', [
+          stagger(100, [
+            animate('0.5s', style({ opacity: 0 }))
+          ])
+        ]),
+      ])
+    ])
+    
+  ] // end of animations
 
 })
 
@@ -32,6 +44,17 @@ export class AppComponent {
 
   toggleNav() {
     this.isOpen = !this.isOpen;
+    this.navItems.length ? this.clearNavItems() : this.fillNavItems();
   }
   
+
+  navItemsBackup = ["home", "example", "shop", "contact", "impressum", "privacy"];
+  navItems = [];
+
+  fillNavItems() {
+    this.navItems = this.navItemsBackup;
+  }
+  clearNavItems(){
+    this.navItems = [];
+  }
 }

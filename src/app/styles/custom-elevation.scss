@@ -1,4 +1,3 @@
-
 @function _get-umbra-map-up($color, $opacity) {
     $shadow-color: if(type-of($color) == color, rgba($color, $opacity * 0.2), $color);
   
@@ -95,22 +94,16 @@
     );
   }
 
-
 // The default color for elevation shadows.
-$mat-elevation-color: black !default;
+$mat-elevation-color: rgb(80, 80, 80) !default;
 
 // The default opacity scaling value for elevation shadows.
-$mat-elevation-opacity: 1 !default;
+$mat-elevation-opacity: 0.4 !default;
 
-.mat-elevation-up-z0{
-  box-shadow: #{map-get(_get-umbra-map-up($mat-elevation-color, $mat-elevation-opacity), 0)},
-  #{map-get(_get-penumbra-map-up($mat-elevation-color, $mat-elevation-opacity), 0)},
-  #{map-get(_get-ambient-map-up($mat-elevation-color, $mat-elevation-opacity), 0)};
-}
-
-
-.mat-elevation-up-z1{
-  box-shadow: #{map-get(_get-umbra-map-up($mat-elevation-color, $mat-elevation-opacity), 1)},
-  #{map-get(_get-penumbra-map-up($mat-elevation-color, $mat-elevation-opacity), 1)},
-  #{map-get(_get-ambient-map-up($mat-elevation-color, $mat-elevation-opacity), 1)};
+@for $i from 0 through 23 {
+  .mat-elevation-up-z#{$i} { 
+        box-shadow: #{map-get(_get-umbra-map-up($mat-elevation-color, $mat-elevation-opacity), $i)},
+        #{map-get(_get-penumbra-map-up($mat-elevation-color, $mat-elevation-opacity), $i)},
+        #{map-get(_get-ambient-map-up($mat-elevation-color, $mat-elevation-opacity), $i)};
+      }
 }

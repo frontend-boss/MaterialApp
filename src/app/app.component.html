@@ -7,15 +7,16 @@
   </mat-toolbar>
 
   <nav [@openClose]="isOpen ? 'open' : 'closed'">
-    <ul>
-      <li><a (click)="toggleNav()" routerLink="home">home</a></li>
-      <li><a (click)="toggleNav()" routerLink="example" >example</a></li>
+    <ul [@openCloseLinks]="navItems.length">
+      <li *ngFor="let navItem of navItems">
+        <a (click)="toggleNav()" routerLink="{{navItem}}">{{navItem}}</a>
+      </li>
     </ul>
   </nav>
   
 </div>
 
-<div class="content-grid mat-elevation-up-z0">
+<div class="content-grid mat-elevation-up-z4">
   <div  [@openCloseBackdrop]="isOpen ? 'open' : 'closed'" class="backdrop" (click)="isOpen == true && toggleNav()" ></div>
   <router-outlet></router-outlet>
 </div>
