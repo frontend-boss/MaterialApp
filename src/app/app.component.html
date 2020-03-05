@@ -9,11 +9,14 @@
   <nav [@openClose]="isOpen ? 'open' : 'closed'">
     <ul [@openCloseLinks]="navItems.length">
       <li *ngFor="let navItem of navItems">
-        <a (click)="toggleNav()" routerLink="{{navItem}}">{{navItem}}</a>
+        <a (click)="toggleNav()" [routerLink]="navItem">{{navItem}}</a>
       </li>
     </ul>
   </nav>
   
+
+
+
 </div>
 
 <div class="content-grid mat-elevation-up-z4">

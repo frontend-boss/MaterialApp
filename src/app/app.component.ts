@@ -24,10 +24,11 @@ import { trigger, state, style, animate, transition, stagger, query } from '@ang
 
     
     trigger('openCloseLinks', [
-      transition('open => closed', [ // each time the binding value changes
-        query('li', [
-          stagger(100, [
-            animate('0.5s', style({ opacity: 0 }))
+      transition(':enter', [ // each time the binding value changes
+        query('a', style({ opacity: 0})),
+        query('a', [
+          stagger(1000, [
+            animate('0.6s', style({ opacity: 1 }))
           ])
         ]),
       ])
