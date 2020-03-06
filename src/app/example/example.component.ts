@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EventEmitterService } from '../event-emitter.service';    
+  
+import { ShoppingItemComponent } from '../shopping-item/shopping-item.component';
 
 @Component({
   selector: 'app-example',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExampleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private eventEmitterService: EventEmitterService) { }
 
   ngOnInit(): void {
   }
 
+  addItemToCart(){
+    console.log("in additemtocart in example component");
+    this.eventEmitterService.onAddItemToCart();
+  }
 }

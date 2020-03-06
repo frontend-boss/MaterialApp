@@ -13,13 +13,21 @@
       </li>
     </ul>
   </nav>
-  
-
-
-
 </div>
 
 <div class="content-grid mat-elevation-up-z4">
   <div  [@openCloseBackdrop]="isOpen ? 'open' : 'closed'" class="backdrop" (click)="isOpen == true && toggleNav()" ></div>
   <router-outlet></router-outlet>
+  
+<app-shopping-item></app-shopping-item>
+</div>
+
+<div class="top-layer">
+  <div class="clipping-shape">
+    <mat-icon class="icon">{{cartIcon}}</mat-icon>
+  </div>
+
+  <div *ngFor="let cartItem of cartItems" class="rectangle">
+    <mat-icon class="icon">{{cartItem}}</mat-icon>
+  </div>
 </div>

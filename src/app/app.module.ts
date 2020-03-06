@@ -6,11 +6,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material-module';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
+import { EventEmitterService } from './event-emitter.service';
+import { CartItemComponent } from './cart-item/cart-item.component';
+import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    CartItemComponent,
+    ShoppingItemComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +23,12 @@ import { HomeComponent } from './home/home.component';
     MaterialModule,
     AppRoutingModule
   ],
-  providers: [],
+  exports:[
+    ShoppingItemComponent
+  ],
+  providers: [
+    EventEmitterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

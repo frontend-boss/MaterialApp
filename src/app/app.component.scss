@@ -8,9 +8,11 @@ $backdrop-overlay-color: rgba(255,255,255,0.8);
 $nav-background: mat-color($mat-green, 100);
 $link-color: black;
 
+$top-layer-background: mat-color($mat-green, 100);
 
 $layer-nav: 1000;
 $layer-content: 2000;
+$layer-top: 4000;
 $layer-backdrop: 9000;
 
 
@@ -72,3 +74,50 @@ $layer-backdrop: 9000;
     }
 }
 
+
+.top-layer{
+    display: inline-block;  
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: $layer-top;
+    min-height: 50px;
+    max-width: 80%;
+    background: rgba(0,0,0,0);
+
+
+    filter: 
+        drop-shadow(-3px -3px 5px rgba(17, 17, 17, 0.12)) 
+        drop-shadow(-5px -5px 8px rgba(17, 17, 17, 0.084)) 
+        drop-shadow(-1px -1px 14px rgba(17, 17, 17, 0.072));
+
+    .clipping-shape{
+        float:left;
+        height: 50px;
+        width: 50px;
+        
+        clip-path: polygon(30% 0, 100% 0, 100% 100%, 0 100%, 0 45%);
+        opacity: 1;
+        background: $top-layer-background;
+        justify-items: center;
+        text-align: center;
+
+    }
+
+    .rectangle{
+        float:left;
+        width: 50px;
+        height: 50px;
+
+        background: $top-layer-background;
+        opacity: 1;
+
+        justify-items: center;
+        text-align: center;
+
+    }
+
+    .icon{
+        margin-top: 10px;
+    }
+}
