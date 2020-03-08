@@ -54,7 +54,9 @@ $layer-backdrop: 9000;
     }
 }
 
+
 .content-grid{
+    padding-top:36px;
     background: white;
     z-index: $layer-content;
     position: absolute;
@@ -71,9 +73,22 @@ $layer-backdrop: 9000;
         top: 0;
         left: 0;
         cursor: pointer;
+        overflow: hidden;
     }
 }
 
+.content-grid::-webkit-scrollbar
+{
+	width: 0px;
+}
+
+.scroll-down-off{
+    overflow-y: hidden;
+}
+
+.scroll-down-on{
+    overflow-y: auto;
+}
 
 .top-layer{
     display: inline-block;  

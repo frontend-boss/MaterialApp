@@ -1,1 +1,7 @@
-<app-shopping-item></app-shopping-item>
+
+<div class="item-container">
+    <div *ngFor="let shoppingitem of shoppingitems" class="item">
+        <app-shopping-item [item]="shoppingitem" ></app-shopping-item>
+    </div>
+</div>
+

@@ -9,22 +9,21 @@ import { HomeComponent } from './home/home.component';
 import { EventEmitterService } from './event-emitter.service';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { ShoppingItemComponent } from './shopping-item/shopping-item.component';
+import { ExampleComponent } from './example/example.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CartItemComponent,
-    ShoppingItemComponent
+    ShoppingItemComponent,
+    ExampleComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule
-  ],
-  exports:[
-    ShoppingItemComponent
   ],
   providers: [
     EventEmitterService

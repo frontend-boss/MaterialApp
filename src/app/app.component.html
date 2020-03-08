@@ -15,11 +15,9 @@
   </nav>
 </div>
 
-<div class="content-grid mat-elevation-up-z4">
-  <div  [@openCloseBackdrop]="isOpen ? 'open' : 'closed'" class="backdrop" (click)="isOpen == true && toggleNav()" ></div>
+<div class="content-grid mat-elevation-up-z4" [ngClass]="isOpen ? 'scroll-down-off' : 'scroll-down-on'">
+  <div [@openCloseBackdrop]="isOpen ? 'open' : 'closed'" class="backdrop" (click)="isOpen == true && toggleNav()" ></div>
   <router-outlet></router-outlet>
-  
-<app-shopping-item></app-shopping-item>
 </div>
 
 <div class="top-layer">

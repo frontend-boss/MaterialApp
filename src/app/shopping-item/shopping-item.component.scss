@@ -1,0 +1,15 @@
+.shopping-item{
+    position:relative;
+    text-align: center;
+    .image{
+        width: 100%; /* or any custom size */
+        height: 100%; 
+        object-fit: contain;
+    }
+
+    .cart-button{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
